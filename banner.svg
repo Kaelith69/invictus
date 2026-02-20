@@ -1,0 +1,83 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 200">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#0f0c29"/>
+      <stop offset="50%" style="stop-color:#302b63"/>
+      <stop offset="100%" style="stop-color:#24243e"/>
+    </linearGradient>
+    <linearGradient id="accent" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#e94560"/>
+      <stop offset="100%" style="stop-color:#0f3460"/>
+    </linearGradient>
+    <filter id="glow">
+      <feGaussianBlur stdDeviation="3" result="coloredBlur"/>
+      <feMerge>
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+
+  <!-- Background -->
+  <rect width="900" height="200" fill="url(#bg)" rx="12"/>
+
+  <!-- Decorative circuit lines -->
+  <g stroke="#e94560" stroke-width="0.8" opacity="0.3">
+    <line x1="0" y1="40" x2="120" y2="40"/>
+    <line x1="120" y1="40" x2="140" y2="60"/>
+    <line x1="140" y1="60" x2="200" y2="60"/>
+    <line x1="780" y1="140" x2="900" y2="140"/>
+    <line x1="760" y1="120" x2="780" y2="140"/>
+    <line x1="700" y1="120" x2="760" y2="120"/>
+    <circle cx="140" cy="60" r="3" fill="#e94560"/>
+    <circle cx="760" cy="120" r="3" fill="#e94560"/>
+  </g>
+
+  <!-- Eye icon -->
+  <g transform="translate(60, 100)" filter="url(#glow)">
+    <ellipse cx="0" cy="0" rx="32" ry="18" fill="none" stroke="#e94560" stroke-width="2.5"/>
+    <circle cx="0" cy="0" r="10" fill="none" stroke="#e94560" stroke-width="2"/>
+    <circle cx="0" cy="0" r="4" fill="#e94560"/>
+    <circle cx="-3" cy="-3" r="2" fill="white" opacity="0.6"/>
+  </g>
+
+  <!-- Title -->
+  <text x="450" y="85" text-anchor="middle" font-family="'Segoe UI', Arial, sans-serif"
+        font-size="38" font-weight="700" fill="white" filter="url(#glow)">
+    INVICTUS
+  </text>
+
+  <!-- Accent underline -->
+  <rect x="200" y="95" width="500" height="3" fill="url(#accent)" rx="2"/>
+
+  <!-- Subtitle -->
+  <text x="450" y="130" text-anchor="middle" font-family="'Segoe UI', Arial, sans-serif"
+        font-size="16" fill="#a8b2d8" letter-spacing="4">
+    ADVANCED LIE DETECTION SYSTEM
+  </text>
+
+  <!-- Tags -->
+  <g font-family="'Segoe UI', Arial, sans-serif" font-size="11" fill="#e94560">
+    <rect x="256" y="150" width="90" height="22" rx="11" fill="#e94560" opacity="0.15" stroke="#e94560" stroke-width="1"/>
+    <text x="301" y="165" text-anchor="middle">Python 3.7+</text>
+
+    <rect x="360" y="150" width="80" height="22" rx="11" fill="#4ecdc4" opacity="0.15" stroke="#4ecdc4" stroke-width="1"/>
+    <text x="400" y="165" text-anchor="middle" fill="#4ecdc4">MediaPipe</text>
+
+    <rect x="454" y="150" width="60" height="22" rx="11" fill="#ffe66d" opacity="0.15" stroke="#ffe66d" stroke-width="1"/>
+    <text x="484" y="165" text-anchor="middle" fill="#ffe66d">OpenCV</text>
+
+    <rect x="528" y="150" width="110" height="22" rx="11" fill="#a8b2d8" opacity="0.15" stroke="#a8b2d8" stroke-width="1"/>
+    <text x="583" y="165" text-anchor="middle" fill="#a8b2d8">Scikit-learn</text>
+
+    <rect x="652" y="150" width="50" height="22" rx="11" fill="#ff6b6b" opacity="0.15" stroke="#ff6b6b" stroke-width="1"/>
+    <text x="677" y="165" text-anchor="middle" fill="#ff6b6b">FER</text>
+  </g>
+
+  <!-- Experimental badge -->
+  <g transform="translate(820, 25)">
+    <rect x="-40" y="-12" width="80" height="22" rx="11" fill="#e94560" opacity="0.9"/>
+    <text x="0" y="4" text-anchor="middle" font-family="Arial, sans-serif"
+          font-size="10" font-weight="bold" fill="white">EXPERIMENTAL</text>
+  </g>
+</svg>
