@@ -8,11 +8,8 @@ matplotlib>=3.4.0
 scikit-learn>=0.24.0
 fer>=22.4.0
 
-# GUI and visualization
-tk>=8.6
-
 # Optional but recommended
-dlib>=19.22.0  # For facial landmark detection
+dlib>=19.22.0  # For facial landmark detection (requires CMake and C++ build tools)
 imutils>=0.5.4  # For image processing utilities
 
 # Development dependencies
@@ -20,6 +17,8 @@ pytest>=6.2.0  # For testing
 black>=21.5b2  # For code formatting
 flake8>=3.9.0  # For linting
 
-# Version constraints are set to ensure compatibility with Python 3.7+
-# Some packages may require additional system-level dependencies
-# Especially dlib which may need CMake and C++ build tools
+# Notes:
+# - tkinter is included with Python 3.x standard library (no pip install needed)
+# - dlib may require: sudo apt-get install cmake build-essential (Linux)
+#                     or Xcode command line tools (macOS)
+# - Python 3.7+ required

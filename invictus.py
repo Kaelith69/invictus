@@ -6,6 +6,7 @@ from tkinter import ttk, filedialog, messagebox
 from PIL import Image, ImageTk
 import threading
 import time
+import itertools
 import pandas as pd
 import matplotlib.pyplot as plt
 from matplotlib.backends.backend_tkagg import FigureCanvasTkAgg
@@ -13,6 +14,7 @@ from sklearn.ensemble import RandomForestClassifier
 from fer import FER  # For emotion detection
 import warnings
 import logging
+from collections import deque
 
 # Constants
 BASELINE_DURATION = 10  # seconds
@@ -40,9 +42,12 @@ class LieDetectorApp:
         
         # Initialize detector
         self.detector = EnhancedLieDetector()
-        
+
+        # Shared lock for thread-safe access to display data
+        self._lock = threading.Lock()
+
         # Initialize progress tracking variable
-        self.progress_var = tk.DoubleVar(value=0)  # Move this line here
+        self.progress_var = tk.DoubleVar(value=0)
         
         # Setup UI
         self.setup_ui()
@@ -51,7 +56,7 @@ class LieDetectorApp:
         self.is_recording = False
         self.video_source = 0
         self.cap = None
-        self.frame_data = []
+        self.frame_data = deque(maxlen=MAX_FRAMES)
         self.baseline_captured = False
         self.analysis_in_progress = False
         self.is_capturing_baseline = False
@@ -214,7 +219,10 @@ class LieDetectorApp:
         frame_count = 0
         while self.is_recording and self.running:
             try:
-                ret, frame = self.cap.read()
+                cap = self.cap
+                if cap is None:
+                    break
+                ret, frame = cap.read()
                 if not ret or frame is None:
                     logging.warning("Failed to capture frame")
                     continue
@@ -236,11 +244,7 @@ class LieDetectorApp:
                 if self.analysis_in_progress:
                     current_time = time.time() - self.start_time
                     metrics['time'] = current_time
-                    if len(self.frame_data) < MAX_FRAMES:
-                        self.frame_data.append(metrics)
-                    else:
-                        self.frame_data.pop(0)
-                        self.frame_data.append(metrics)
+                    self.frame_data.append(metrics)
                     
                     # Check duration
                     if current_time >= self.recording_duration:
@@ -252,7 +256,7 @@ class LieDetectorApp:
                 display_img = self.resize_image(display_img, VIDEO_WIDTH, VIDEO_HEIGHT)
                 
                 # Store image to avoid garbage collection
-                with threading.Lock():
+                with self._lock:
                     self._display_img = display_img
                     self._photo = ImageTk.PhotoImage(image=display_img)
                     self._metrics = metrics
@@ -269,7 +273,7 @@ class LieDetectorApp:
             return
         
         try:
-            with threading.Lock():
+            with self._lock:
                 if hasattr(self, '_photo'):
                     self.video_label.config(image=self._photo)
                     self.video_label.image = self._photo  # Prevent garbage collection
@@ -281,10 +285,10 @@ class LieDetectorApp:
             # Update progress
             if self.is_capturing_baseline:
                 elapsed = time.time() - self.start_time
-                self.progress_var.set((elapsed / BASELINE_DURATION) * 100)
+                self.progress_var.set(min((elapsed / BASELINE_DURATION) * 100, 100))
             elif self.analysis_in_progress:
                 elapsed = time.time() - self.start_time
-                self.progress_var.set((elapsed / self.recording_duration) * 100)
+                self.progress_var.set(min((elapsed / self.recording_duration) * 100, 100))
             
             self.root.after(50, self.update_gui)
         except Exception as e:
@@ -365,7 +369,7 @@ class LieDetectorApp:
             messagebox.showerror("Error", str(e))
             return
         
-        self.frame_data = []
+        self.frame_data = deque(maxlen=MAX_FRAMES)
         self.analysis_in_progress = True
         self.start_time = time.time()
         self.progress_var.set(0)
@@ -433,7 +437,9 @@ class LieDetectorApp:
             return
         
         try:
-            df = pd.DataFrame(self.frame_data[-100:])  # Last 100 frames for smoothness
+            df = pd.DataFrame(list(itertools.islice(
+                self.frame_data, max(0, len(self.frame_data) - 100), None
+            )))  # Last 100 frames without materialising the full deque
             
             for ax in self.ax:
                 ax.clear()
@@ -527,7 +533,6 @@ class LieDetectorApp:
                 f.write("\n\nNote: Results are experimental and not definitive.")
             
             messagebox.showinfo("Success", f"Results saved to {file_path}")
-            self.frame_data = []  # Clear data
         except Exception as e:
             logging.error(f"Save error: {e}")
             messagebox.showerror("Error", f"Failed to save results: {str(e)}")
@@ -536,8 +541,12 @@ class LieDetectorApp:
         """Clean up resources on exit."""
         self.running = False
         self.is_recording = False
+        self.analysis_in_progress = False
+        if self.video_thread is not None:
+            self.video_thread.join(timeout=1.0)
         if self.cap is not None:
             self.cap.release()
+            self.cap = None
         self.root.destroy()
 
 class EnhancedLieDetector:
@@ -572,11 +581,11 @@ class EnhancedLieDetector:
         self.last_blink_time = time.time()
         self.blink_times = []
         self.sensitivity = 0.7
-        self.landmark_history = []
         self.microexpression_window = 15  # ~0.5s at 30fps
+        self.landmark_history = deque(maxlen=self.microexpression_window)
         self.font = cv2.FONT_HERSHEY_SIMPLEX
-        self.eye_movement_history = []
         self.eye_movement_window = 30
+        self.eye_movement_history = deque(maxlen=self.eye_movement_window)
         
         # Emotion weights for deception
         self.emotion_weights = {
@@ -697,7 +706,7 @@ class EnhancedLieDetector:
         current_time = time.time()
         if ear > 0 and ear < self.blink_threshold:
             self.blink_counter += 1
-            if self.blink_counter >= 2 and current_time - self.last_blink_time > BLINK_MIN_DURATION:
+            if self.blink_counter == 2 and current_time - self.last_blink_time > BLINK_MIN_DURATION:
                 self.blink_times.append(current_time)
                 self.last_blink_time = current_time
                 cv2.putText(display_frame, "BLINK DETECTED", (10, 30), self.font, 0.7, (0, 0, 255), 2)
@@ -706,15 +715,11 @@ class EnhancedLieDetector:
         
         blink_rate = self.calculate_blink_rate()
         
-        # Eye movement
+        # Eye movement (deque manages its own max size)
         self.eye_movement_history.append((left_eye[0], right_eye[0]))
-        if len(self.eye_movement_history) > self.eye_movement_window:
-            self.eye_movement_history.pop(0)
         
-        # Microexpression detection
+        # Microexpression detection (deque manages its own max size)
         self.landmark_history.append(points)
-        if len(self.landmark_history) > self.microexpression_window:
-            self.landmark_history.pop(0)
         microexpression = self.detect_microexpression()
         
         # Emotion detection
