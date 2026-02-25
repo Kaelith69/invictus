@@ -150,6 +150,7 @@
 
 - [Overview](#-overview)
 - [Documentation Suite](#-documentation-suite)
+- [Documentation Generation Process](#-documentation-generation-process)
 - [Core Capabilities](#-core-capabilities)
 - [Architecture](#-architecture)
 - [Data Flow](#-data-flow)
@@ -190,6 +191,20 @@ The project documentation is organized to cover the full repository lifecycle, f
 | [CONTRIBUTING.md](CONTRIBUTING.md) | Contribution standards and development workflow |
 | [SECURITY.md](SECURITY.md) | Vulnerability disclosure process and security policy |
 | [CHANGELOG.md](CHANGELOG.md) | Versioned release history |
+
+---
+
+## 🧭 Documentation Generation Process
+
+To keep documentation accurate and aligned with the live codebase, updates follow this mandatory sequence:
+
+1. **Repository analysis** — review `invictus.py`, dependencies, and runtime behavior before writing docs.
+2. **Structure planning** — map content into README + wiki pages with clear ownership per page.
+3. **Technical validation** — verify setup/usage commands and architecture claims against the code.
+4. **Visual consistency** — keep SVG/diagram styling and navigation structure consistent across docs.
+5. **Maintenance pass** — update cross-links and changelog entries when behavior changes.
+
+This process ensures the documentation suite stays production-grade and project-accurate.
 
 ---
 
