@@ -1,0 +1,187 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 820 560" width="820">
+  <defs>
+    <linearGradient id="cBg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#0a0a1a"/>
+      <stop offset="100%" style="stop-color:#0f0c29"/>
+    </linearGradient>
+    <linearGradient id="cAcc" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#7C3AED"/>
+      <stop offset="50%" style="stop-color:#2563EB"/>
+      <stop offset="100%" style="stop-color:#06B6D4"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Background -->
+  <rect width="820" height="560" fill="url(#cBg)" rx="12"/>
+
+  <!-- Title -->
+  <text x="410" y="36" text-anchor="middle" font-family="'Segoe UI', Arial, sans-serif"
+        font-size="15" font-weight="700" fill="white" letter-spacing="2">CAPABILITY OVERVIEW</text>
+  <rect x="110" y="44" width="600" height="2" fill="url(#cAcc)" rx="1" opacity="0.5"/>
+
+  <!-- Legend -->
+  <rect x="530" y="55" width="11" height="11" rx="3" fill="#06B6D4" fill-opacity="0.8"/>
+  <text x="546" y="65" font-family="'Segoe UI', Arial, sans-serif" font-size="9.5" fill="#a8b2d8">Implemented</text>
+  <rect x="630" y="55" width="11" height="11" rx="3" fill="#2563EB" fill-opacity="0.5" stroke="#2563EB" stroke-width="1" stroke-dasharray="2,1"/>
+  <text x="646" y="65" font-family="'Segoe UI', Arial, sans-serif" font-size="9.5" fill="#a8b2d8">In Progress</text>
+  <rect x="726" y="55" width="11" height="11" rx="3" fill="none" stroke="#4a5568" stroke-width="1" stroke-dasharray="2,2"/>
+  <text x="742" y="65" font-family="'Segoe UI', Arial, sans-serif" font-size="9.5" fill="#4a5568">Planned</text>
+
+  <!-- ─── ROW 1 ─── -->
+  <!-- Feature 1: Real-time Webcam Capture -->
+  <rect x="28" y="78" width="370" height="74" rx="8" fill="#06B6D4" fill-opacity="0.09" stroke="#06B6D4" stroke-width="1.4"/>
+  <!-- status dot -->
+  <circle cx="48" cy="115" r="7" fill="#06B6D4" fill-opacity="0.8"/>
+  <line x1="44" y1="115" x2="48" y2="119" stroke="white" stroke-width="1.4"/>
+  <line x1="48" y1="119" x2="54" y2="111" stroke="white" stroke-width="1.4"/>
+  <!-- icon: camera -->
+  <rect x="68" y="96" width="26" height="18" rx="3" fill="none" stroke="#67e8f9" stroke-width="1.5"/>
+  <polygon points="94,100 106,94 106,116 94,110" fill="#67e8f9" fill-opacity="0.7"/>
+  <circle cx="81" cy="105" r="5" fill="none" stroke="#67e8f9" stroke-width="1.2"/>
+  <text x="120" y="103" font-family="'Segoe UI', Arial, sans-serif" font-size="11" font-weight="700" fill="white">Real-time Webcam Capture</text>
+  <text x="120" y="118" font-family="'Segoe UI', Arial, sans-serif" font-size="9" fill="#a8b2d8">cv2.VideoCapture — 0.5× downscale, every-other-frame skip,</text>
+  <text x="120" y="131" font-family="'Segoe UI', Arial, sans-serif" font-size="9" fill="#a8b2d8">daemon thread, 10 ms sleep to cap CPU usage</text>
+  <text x="376" y="148" text-anchor="end" font-family="'Segoe UI', Arial, sans-serif" font-size="8.5" fill="#67e8f9">v1.0.0</text>
+
+  <!-- Feature 2: 468-point FaceMesh -->
+  <rect x="422" y="78" width="370" height="74" rx="8" fill="#06B6D4" fill-opacity="0.09" stroke="#06B6D4" stroke-width="1.4"/>
+  <circle cx="442" cy="115" r="7" fill="#06B6D4" fill-opacity="0.8"/>
+  <line x1="438" y1="115" x2="442" y2="119" stroke="white" stroke-width="1.4"/>
+  <line x1="442" y1="119" x2="448" y2="111" stroke="white" stroke-width="1.4"/>
+  <!-- icon: mesh dots -->
+  <circle cx="472" cy="101" r="2" fill="#67e8f9"/>
+  <circle cx="484" cy="97" r="1.5" fill="#67e8f9"/>
+  <circle cx="496" cy="101" r="2" fill="#67e8f9"/>
+  <circle cx="478" cy="110" r="1.5" fill="#67e8f9"/>
+  <circle cx="490" cy="110" r="1.5" fill="#67e8f9"/>
+  <circle cx="472" cy="119" r="1.5" fill="#67e8f9"/>
+  <circle cx="484" cy="117" r="2" fill="#67e8f9"/>
+  <circle cx="496" cy="119" r="1.5" fill="#67e8f9"/>
+  <line x1="472" y1="101" x2="484" y2="97" stroke="#67e8f9" stroke-width="0.6" opacity="0.5"/>
+  <line x1="484" y1="97" x2="496" y2="101" stroke="#67e8f9" stroke-width="0.6" opacity="0.5"/>
+  <line x1="478" y1="110" x2="490" y2="110" stroke="#67e8f9" stroke-width="0.6" opacity="0.5"/>
+  <text x="514" y="103" font-family="'Segoe UI', Arial, sans-serif" font-size="11" font-weight="700" fill="white">468-point MediaPipe FaceMesh</text>
+  <text x="514" y="118" font-family="'Segoe UI', Arial, sans-serif" font-size="9" fill="#a8b2d8">3D landmark grid per frame — detection conf ≥ 0.6,</text>
+  <text x="514" y="131" font-family="'Segoe UI', Arial, sans-serif" font-size="9" fill="#a8b2d8">tracking conf ≥ 0.6, FACEMESH_CONTOURS overlay drawn</text>
+  <text x="770" y="148" text-anchor="end" font-family="'Segoe UI', Arial, sans-serif" font-size="8.5" fill="#67e8f9">v1.0.0</text>
+
+  <!-- ─── ROW 2 ─── -->
+  <!-- Feature 3: EAR Blink Detection -->
+  <rect x="28" y="166" width="370" height="74" rx="8" fill="#06B6D4" fill-opacity="0.09" stroke="#06B6D4" stroke-width="1.4"/>
+  <circle cx="48" cy="203" r="7" fill="#06B6D4" fill-opacity="0.8"/>
+  <line x1="44" y1="203" x2="48" y2="207" stroke="white" stroke-width="1.4"/>
+  <line x1="48" y1="207" x2="54" y2="199" stroke="white" stroke-width="1.4"/>
+  <!-- icon: eye -->
+  <ellipse cx="84" cy="204" rx="18" ry="10" fill="none" stroke="#67e8f9" stroke-width="1.5"/>
+  <circle cx="84" cy="204" r="6" fill="none" stroke="#67e8f9" stroke-width="1.2"/>
+  <circle cx="84" cy="204" r="2.5" fill="#67e8f9"/>
+  <text x="120" y="191" font-family="'Segoe UI', Arial, sans-serif" font-size="11" font-weight="700" fill="white">EAR Blink Detection</text>
+  <text x="120" y="206" font-family="'Segoe UI', Arial, sans-serif" font-size="9" fill="#a8b2d8">6-point geometric Eye Aspect Ratio — left + right eyes averaged,</text>
+  <text x="120" y="219" font-family="'Segoe UI', Arial, sans-serif" font-size="9" fill="#a8b2d8">blink counted on 2-frame threshold, 60 s rolling rate window</text>
+  <text x="376" y="236" text-anchor="end" font-family="'Segoe UI', Arial, sans-serif" font-size="8.5" fill="#67e8f9">v1.0.0</text>
+
+  <!-- Feature 4: Facial Asymmetry -->
+  <rect x="422" y="166" width="370" height="74" rx="8" fill="#06B6D4" fill-opacity="0.09" stroke="#06B6D4" stroke-width="1.4"/>
+  <circle cx="442" cy="203" r="7" fill="#06B6D4" fill-opacity="0.8"/>
+  <line x1="438" y1="203" x2="442" y2="207" stroke="white" stroke-width="1.4"/>
+  <line x1="442" y1="207" x2="448" y2="199" stroke="white" stroke-width="1.4"/>
+  <!-- icon: split face -->
+  <rect x="462" y="190" width="36" height="28" rx="14" fill="none" stroke="#67e8f9" stroke-width="1.4"/>
+  <line x1="480" y1="190" x2="480" y2="218" stroke="#67e8f9" stroke-width="1" stroke-dasharray="2,2"/>
+  <circle cx="471" cy="200" r="2" fill="#67e8f9" fill-opacity="0.5"/>
+  <circle cx="489" cy="200" r="2" fill="#67e8f9"/>
+  <text x="514" y="191" font-family="'Segoe UI', Arial, sans-serif" font-size="11" font-weight="700" fill="white">Facial Asymmetry Scoring</text>
+  <text x="514" y="206" font-family="'Segoe UI', Arial, sans-serif" font-size="9" fill="#a8b2d8">Nose-to-cheek (234 / 454) distance ratio — landmarks[1] pivot,</text>
+  <text x="514" y="219" font-family="'Segoe UI', Arial, sans-serif" font-size="9" fill="#a8b2d8">normalized 0–1, baseline-relative in deception calc</text>
+  <text x="770" y="236" text-anchor="end" font-family="'Segoe UI', Arial, sans-serif" font-size="8.5" fill="#67e8f9">v1.0.0</text>
+
+  <!-- ─── ROW 3 ─── -->
+  <!-- Feature 5: FER Emotion -->
+  <rect x="28" y="254" width="370" height="74" rx="8" fill="#06B6D4" fill-opacity="0.09" stroke="#06B6D4" stroke-width="1.4"/>
+  <circle cx="48" cy="291" r="7" fill="#06B6D4" fill-opacity="0.8"/>
+  <line x1="44" y1="291" x2="48" y2="295" stroke="white" stroke-width="1.4"/>
+  <line x1="48" y1="295" x2="54" y2="287" stroke="white" stroke-width="1.4"/>
+  <!-- icon: smile -->
+  <circle cx="84" cy="291" rx="14" r="14" fill="none" stroke="#67e8f9" stroke-width="1.4"/>
+  <path d="M76,296 Q84,304 92,296" stroke="#67e8f9" stroke-width="1.3" fill="none"/>
+  <circle cx="79" cy="287" r="1.8" fill="#67e8f9"/>
+  <circle cx="89" cy="287" r="1.8" fill="#67e8f9"/>
+  <text x="120" y="279" font-family="'Segoe UI', Arial, sans-serif" font-size="11" font-weight="700" fill="white">FER Emotion Recognition (7-class)</text>
+  <text x="120" y="294" font-family="'Segoe UI', Arial, sans-serif" font-size="9" fill="#a8b2d8">angry · disgust · fear · happy · sad · surprise · neutral</text>
+  <text x="120" y="307" font-family="'Segoe UI', Arial, sans-serif" font-size="9" fill="#a8b2d8">MTCNN face detection; weighted score fed into RF features</text>
+  <text x="376" y="324" text-anchor="end" font-family="'Segoe UI', Arial, sans-serif" font-size="8.5" fill="#67e8f9">v1.0.0</text>
+
+  <!-- Feature 6: Microexpression Detection -->
+  <rect x="422" y="254" width="370" height="74" rx="8" fill="#06B6D4" fill-opacity="0.09" stroke="#06B6D4" stroke-width="1.4"/>
+  <circle cx="442" cy="291" r="7" fill="#06B6D4" fill-opacity="0.8"/>
+  <line x1="438" y1="291" x2="442" y2="295" stroke="white" stroke-width="1.4"/>
+  <line x1="442" y1="295" x2="448" y2="287" stroke="white" stroke-width="1.4"/>
+  <!-- icon: lightning bolt -->
+  <polygon points="484,278 476,293 482,293 474,308 490,291 484,291" fill="none" stroke="#67e8f9" stroke-width="1.3"/>
+  <text x="514" y="279" font-family="'Segoe UI', Arial, sans-serif" font-size="11" font-weight="700" fill="white">Microexpression Detection</text>
+  <text x="514" y="294" font-family="'Segoe UI', Arial, sans-serif" font-size="9" fill="#a8b2d8">15-frame landmark velocity window — flags "Sudden Movement"</text>
+  <text x="514" y="307" font-family="'Segoe UI', Arial, sans-serif" font-size="9" fill="#a8b2d8">when max velocity &gt; 2× mean × sensitivity scalar</text>
+  <text x="770" y="324" text-anchor="end" font-family="'Segoe UI', Arial, sans-serif" font-size="8.5" fill="#67e8f9">v1.0.0</text>
+
+  <!-- ─── ROW 4 ─── -->
+  <!-- Feature 7: RF Deception Scoring -->
+  <rect x="28" y="342" width="370" height="74" rx="8" fill="#06B6D4" fill-opacity="0.09" stroke="#06B6D4" stroke-width="1.4"/>
+  <circle cx="48" cy="379" r="7" fill="#06B6D4" fill-opacity="0.8"/>
+  <line x1="44" y1="379" x2="48" y2="383" stroke="white" stroke-width="1.4"/>
+  <line x1="48" y1="383" x2="54" y2="375" stroke="white" stroke-width="1.4"/>
+  <!-- icon: RF tree -->
+  <line x1="84" y1="399" x2="84" y2="381" stroke="#67e8f9" stroke-width="1.3"/>
+  <line x1="84" y1="391" x2="76" y2="381" stroke="#67e8f9" stroke-width="1.3"/>
+  <line x1="84" y1="391" x2="92" y2="381" stroke="#67e8f9" stroke-width="1.3"/>
+  <circle cx="84" cy="379" r="4" fill="#67e8f9" fill-opacity="0.35" stroke="#67e8f9" stroke-width="1"/>
+  <circle cx="76" cy="377" r="4" fill="#67e8f9" fill-opacity="0.35" stroke="#67e8f9" stroke-width="1"/>
+  <circle cx="92" cy="377" r="4" fill="#67e8f9" fill-opacity="0.35" stroke="#67e8f9" stroke-width="1"/>
+  <text x="120" y="367" font-family="'Segoe UI', Arial, sans-serif" font-size="11" font-weight="700" fill="white">RandomForest Deception Scoring</text>
+  <text x="120" y="382" font-family="'Segoe UI', Arial, sans-serif" font-size="9" fill="#a8b2d8">100 estimators, 5-feature vector (EAR dev, asymmetry, blink dev,</text>
+  <text x="120" y="395" font-family="'Segoe UI', Arial, sans-serif" font-size="9" fill="#a8b2d8">movement, emotion weight) · predict_proba()[1] × 100 × sensitivity</text>
+  <text x="376" y="412" text-anchor="end" font-family="'Segoe UI', Arial, sans-serif" font-size="8.5" fill="#67e8f9">v1.0.0</text>
+
+  <!-- Feature 8: CSV + Report Export -->
+  <rect x="422" y="342" width="370" height="74" rx="8" fill="#06B6D4" fill-opacity="0.09" stroke="#06B6D4" stroke-width="1.4"/>
+  <circle cx="442" cy="379" r="7" fill="#06B6D4" fill-opacity="0.8"/>
+  <line x1="438" y1="379" x2="442" y2="383" stroke="white" stroke-width="1.4"/>
+  <line x1="442" y1="383" x2="448" y2="375" stroke="white" stroke-width="1.4"/>
+  <!-- icon: file -->
+  <rect x="466" y="367" width="22" height="26" rx="2" fill="none" stroke="#67e8f9" stroke-width="1.4"/>
+  <line x1="470" y1="374" x2="484" y2="374" stroke="#67e8f9" stroke-width="1"/>
+  <line x1="470" y1="379" x2="484" y2="379" stroke="#67e8f9" stroke-width="1"/>
+  <line x1="470" y1="384" x2="480" y2="384" stroke="#67e8f9" stroke-width="1"/>
+  <text x="514" y="367" font-family="'Segoe UI', Arial, sans-serif" font-size="11" font-weight="700" fill="white">CSV + TXT Report Export</text>
+  <text x="514" y="382" font-family="'Segoe UI', Arial, sans-serif" font-size="9" fill="#a8b2d8">df.to_csv() of full frame_data deque + plaintext summary report</text>
+  <text x="514" y="395" font-family="'Segoe UI', Arial, sans-serif" font-size="9" fill="#a8b2d8">with avg/max deception %, blink rate, asymmetry, emotion mode</text>
+  <text x="770" y="412" text-anchor="end" font-family="'Segoe UI', Arial, sans-serif" font-size="8.5" fill="#67e8f9">v1.0.0</text>
+
+  <!-- ─── ROW 5: In-progress + Planned ─── -->
+  <!-- In Progress: Audio / Voice Stress -->
+  <rect x="28" y="430" width="240" height="60" rx="8" fill="#2563EB" fill-opacity="0.08" stroke="#2563EB" stroke-width="1.2" stroke-dasharray="5,3"/>
+  <circle cx="48" cy="460" r="7" fill="#2563EB" fill-opacity="0.5" stroke="#2563EB" stroke-width="1"/>
+  <text x="54" y="463" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="#60a5fa">…</text>
+  <!-- mic icon -->
+  <rect x="72" y="449" width="10" height="16" rx="5" fill="none" stroke="#60a5fa" stroke-width="1.3"/>
+  <path d="M67,461 Q67,472 77,472 Q87,472 87,461" stroke="#60a5fa" stroke-width="1.2" fill="none"/>
+  <line x1="77" y1="472" x2="77" y2="478" stroke="#60a5fa" stroke-width="1.2"/>
+  <text x="100" y="454" font-family="'Segoe UI', Arial, sans-serif" font-size="10" font-weight="700" fill="white">Voice Stress Analysis</text>
+  <text x="100" y="468" font-family="'Segoe UI', Arial, sans-serif" font-size="8.5" fill="#a8b2d8">audio channel · pitch variance</text>
+  <text x="264" y="487" text-anchor="end" font-family="'Segoe UI', Arial, sans-serif" font-size="8" fill="#60a5fa">in-progress</text>
+
+  <!-- Planned: Multi-face tracking -->
+  <rect x="286" y="430" width="240" height="60" rx="8" fill="none" stroke="#4a5568" stroke-width="1" stroke-dasharray="3,3"/>
+  <circle cx="306" cy="460" r="7" fill="none" stroke="#4a5568" stroke-width="1.2"/>
+  <text x="306" y="464" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="#4a5568">○</text>
+  <text x="324" y="454" font-family="'Segoe UI', Arial, sans-serif" font-size="10" font-weight="700" fill="#4a5568">Multi-face Tracking</text>
+  <text x="324" y="468" font-family="'Segoe UI', Arial, sans-serif" font-size="8.5" fill="#4a5568">max_num_faces &gt; 1 · per-face scores</text>
+  <text x="522" y="487" text-anchor="end" font-family="'Segoe UI', Arial, sans-serif" font-size="8" fill="#4a5568">planned</text>
+
+  <!-- Planned: LSTM Temporal -->
+  <rect x="544" y="430" width="248" height="60" rx="8" fill="none" stroke="#4a5568" stroke-width="1" stroke-dasharray="3,3"/>
+  <circle cx="564" cy="460" r="7" fill="none" stroke="#4a5568" stroke-width="1.2"/>
+  <text x="564" y="464" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="#4a5568">○</text>
+  <text x="582" y="454" font-family="'Segoe UI', Arial, sans-serif" font-size="10" font-weight="700" fill="#4a5568">LSTM Temporal Modeling</text>
+  <text x="582" y="468" font-family="'Segoe UI', Arial, sans-serif" font-size="8.5" fill="#4a5568">replace RandomForest · sequence context</text>
+  <text x="788" y="487" text-anchor="end" font-family="'Segoe UI', Arial, sans-serif" font-size="8" fill="#4a5568">planned</text>
+</svg>
