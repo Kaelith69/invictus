@@ -149,6 +149,7 @@
 ## 📋 Table of Contents
 
 - [Overview](#-overview)
+- [Documentation Suite](#-documentation-suite)
 - [Core Capabilities](#-core-capabilities)
 - [Architecture](#-architecture)
 - [Data Flow](#-data-flow)
@@ -170,6 +171,25 @@
 - [Troubleshooting](#-troubleshooting)
 - [Contributing](#-contributing)
 - [License](#-license)
+
+---
+
+## 📚 Documentation Suite
+
+The project documentation is organized to cover the full repository lifecycle, from onboarding to maintenance:
+
+| Document | Scope |
+|---|---|
+| [README.md](README.md) | Product overview, architecture, setup, and usage |
+| [wiki/Home.md](wiki/Home.md) | Wiki navigation and system summary |
+| [wiki/Architecture.md](wiki/Architecture.md) | Component design and processing flow |
+| [wiki/Installation.md](wiki/Installation.md) | Platform-specific setup and environment requirements |
+| [wiki/Usage.md](wiki/Usage.md) | End-to-end runtime workflow and controls |
+| [wiki/Troubleshooting.md](wiki/Troubleshooting.md) | Error diagnosis and common fixes |
+| [wiki/Privacy.md](wiki/Privacy.md) | Privacy model and data-handling expectations |
+| [CONTRIBUTING.md](CONTRIBUTING.md) | Contribution standards and development workflow |
+| [SECURITY.md](SECURITY.md) | Vulnerability disclosure process and security policy |
+| [CHANGELOG.md](CHANGELOG.md) | Versioned release history |
 
 ---
 
