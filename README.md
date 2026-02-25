@@ -202,6 +202,11 @@ The system is built entirely in Python using industry-standard libraries and pro
       <stop offset="0%" style="stop-color:#06B6D4"/>
       <stop offset="100%" style="stop-color:#0891b2"/>
     </linearGradient>
+    <linearGradient id="capAccent" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#7C3AED"/>
+      <stop offset="50%" style="stop-color:#2563EB"/>
+      <stop offset="100%" style="stop-color:#06B6D4"/>
+    </linearGradient>
     <filter id="cardGlow">
       <feGaussianBlur stdDeviation="3" result="coloredBlur"/>
       <feMerge><feMergeNode in="coloredBlur"/><feMergeNode in="SourceGraphic"/></feMerge>
@@ -212,7 +217,7 @@ The system is built entirely in Python using industry-standard libraries and pro
   <!-- Title -->
   <text x="430" y="38" text-anchor="middle" font-family="'Segoe UI', Arial, sans-serif"
         font-size="16" font-weight="700" fill="white" letter-spacing="2">CORE CAPABILITIES</text>
-  <rect x="160" y="46" width="540" height="2" fill="url(#heroAccent)" rx="1" opacity="0.6"/>
+  <rect x="160" y="46" width="540" height="2" fill="url(#capAccent)" rx="1" opacity="0.6"/>
 
   <!-- Row 1: 4 cards -->
   <!-- Card 1: Video Analysis -->
