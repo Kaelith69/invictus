@@ -136,6 +136,16 @@
 
 ---
 
+**Invictus** stares at your face with 468 landmarks and goes, *"Hmm, interesting."* It's like having a really judgmental friend who majored in computer vision and never blinks. No cloud. No spying. No Skynet. Just you, your webcam, and a Random Forest that definitely knows you ate the last slice of pizza.
+
+<div align="center">
+
+![Humor](https://media.giphy.com/media/077i6AULCXc0FKTj9s/giphy.gif)
+
+</div>
+
+---
+
 ## 📋 Table of Contents
 
 - [Overview](#-overview)
