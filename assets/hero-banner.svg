@@ -1,0 +1,153 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 820 220" width="820">
+  <defs>
+    <linearGradient id="hBg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#0a0a1a"/>
+      <stop offset="55%" style="stop-color:#0f0c29"/>
+      <stop offset="100%" style="stop-color:#12102a"/>
+    </linearGradient>
+    <linearGradient id="hAccent" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#7C3AED"/>
+      <stop offset="50%" style="stop-color:#2563EB"/>
+      <stop offset="100%" style="stop-color:#06B6D4"/>
+    </linearGradient>
+    <linearGradient id="eyeGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#7C3AED"/>
+      <stop offset="100%" style="stop-color:#06B6D4"/>
+    </linearGradient>
+    <filter id="glow">
+      <feGaussianBlur stdDeviation="3.5" result="blur"/>
+      <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <filter id="softGlow">
+      <feGaussianBlur stdDeviation="1.5" result="blur"/>
+      <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+  </defs>
+
+  <!-- Background -->
+  <rect width="820" height="220" fill="url(#hBg)" rx="12"/>
+
+  <!-- Subtle grid -->
+  <g stroke="#7C3AED" stroke-width="0.3" opacity="0.09">
+    <line x1="0" y1="55" x2="820" y2="55"/>
+    <line x1="0" y1="110" x2="820" y2="110"/>
+    <line x1="0" y1="165" x2="820" y2="165"/>
+    <line x1="164" y1="0" x2="164" y2="220"/>
+    <line x1="328" y1="0" x2="328" y2="220"/>
+    <line x1="492" y1="0" x2="492" y2="220"/>
+    <line x1="656" y1="0" x2="656" y2="220"/>
+  </g>
+
+  <!-- Left circuit traces -->
+  <g stroke="#7C3AED" stroke-width="1.2" opacity="0.45" fill="none">
+    <polyline points="0,42 70,42 88,60 140,60"/>
+    <circle cx="88" cy="60" r="2.5" fill="#7C3AED" stroke="none"/>
+    <polyline points="0,178 55,178 73,160 130,160"/>
+    <circle cx="73" cy="160" r="2.5" fill="#06B6D4" stroke="none"/>
+    <polyline points="0,100 30,100 42,112 75,112"/>
+    <circle cx="42" cy="112" r="2" fill="#2563EB" stroke="none"/>
+  </g>
+
+  <!-- Right circuit traces -->
+  <g stroke="#06B6D4" stroke-width="1.2" opacity="0.45" fill="none">
+    <polyline points="820,42 750,42 732,60 680,60"/>
+    <circle cx="732" cy="60" r="2.5" fill="#06B6D4" stroke="none"/>
+    <polyline points="820,178 765,178 747,160 690,160"/>
+    <circle cx="747" cy="160" r="2.5" fill="#7C3AED" stroke="none"/>
+    <polyline points="820,100 790,100 778,112 745,112"/>
+    <circle cx="778" cy="112" r="2" fill="#2563EB" stroke="none"/>
+  </g>
+
+  <!-- Eye / scanner icon (left side center) -->
+  <g transform="translate(95,110)" filter="url(#glow)">
+    <!-- Outer scan rings -->
+    <circle cx="0" cy="0" r="46" fill="none" stroke="#7C3AED" stroke-width="0.7" opacity="0.35" stroke-dasharray="5,4"/>
+    <circle cx="0" cy="0" r="36" fill="none" stroke="#2563EB" stroke-width="0.7" opacity="0.28" stroke-dasharray="3,5"/>
+    <!-- Scan sweep arc -->
+    <path d="M0,-36 A36,36 0 0,1 36,0" stroke="#7C3AED" stroke-width="1.5" fill="none" opacity="0.6"/>
+    <!-- Eye outline -->
+    <ellipse cx="0" cy="0" rx="30" ry="17" fill="none" stroke="url(#eyeGrad)" stroke-width="2.2"/>
+    <!-- Iris -->
+    <circle cx="0" cy="0" r="10" fill="none" stroke="#06B6D4" stroke-width="1.8"/>
+    <!-- Pupil -->
+    <circle cx="0" cy="0" r="4.5" fill="url(#eyeGrad)"/>
+    <!-- Specular -->
+    <circle cx="-3.5" cy="-3.5" r="2" fill="white" opacity="0.65"/>
+    <!-- Axis ticks -->
+    <line x1="-30" y1="0" x2="-38" y2="0" stroke="#7C3AED" stroke-width="1.8"/>
+    <line x1="30" y1="0" x2="38" y2="0" stroke="#06B6D4" stroke-width="1.8"/>
+    <line x1="0" y1="-17" x2="0" y2="-25" stroke="#2563EB" stroke-width="1.8"/>
+    <line x1="0" y1="17" x2="0" y2="25" stroke="#2563EB" stroke-width="1.8"/>
+    <!-- Corner brackets -->
+    <path d="M-42,-22 L-42,-32 L-32,-32" stroke="#4a5568" stroke-width="1.2" fill="none"/>
+    <path d="M42,-22 L42,-32 L32,-32" stroke="#4a5568" stroke-width="1.2" fill="none"/>
+    <path d="M-42,22 L-42,32 L-32,32" stroke="#4a5568" stroke-width="1.2" fill="none"/>
+    <path d="M42,22 L42,32 L32,32" stroke="#4a5568" stroke-width="1.2" fill="none"/>
+  </g>
+
+  <!-- Landmark dot scatter (right side decorative) -->
+  <g opacity="0.25" fill="#06B6D4">
+    <circle cx="710" cy="78" r="2"/>  <circle cx="726" cy="70" r="1.5"/>
+    <circle cx="698" cy="65" r="1.5"/><circle cx="740" cy="82" r="1"/>
+    <circle cx="715" cy="92" r="1.5"/><circle cx="702" cy="88" r="1"/>
+    <circle cx="728" cy="98" r="2"/>  <circle cx="745" cy="72" r="1.5"/>
+    <circle cx="695" cy="100" r="1"/><circle cx="755" cy="88" r="1.5"/>
+    <circle cx="720" cy="115" r="1"/><circle cx="708" cy="58" r="1.5"/>
+    <circle cx="735" cy="120" r="1"/><circle cx="750" cy="108" r="1.5"/>
+  </g>
+  <g opacity="0.18" stroke="#7C3AED" stroke-width="0.6" fill="none">
+    <line x1="710" y1="78" x2="726" y2="70"/>
+    <line x1="726" y1="70" x2="698" y2="65"/>
+    <line x1="710" y1="78" x2="715" y2="92"/>
+    <line x1="715" y1="92" x2="728" y2="98"/>
+    <line x1="726" y1="70" x2="740" y2="82"/>
+    <line x1="740" y1="82" x2="745" y2="72"/>
+  </g>
+
+  <!-- Title -->
+  <text x="455" y="90" text-anchor="middle"
+        font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif"
+        font-size="56" font-weight="800" fill="white" letter-spacing="10"
+        filter="url(#glow)">INVICTUS</text>
+
+  <!-- Accent underline bar -->
+  <rect x="215" y="103" width="480" height="3" fill="url(#hAccent)" rx="1.5"/>
+
+  <!-- Tagline -->
+  <text x="455" y="133" text-anchor="middle"
+        font-family="'Segoe UI', Arial, sans-serif"
+        font-size="13.5" fill="#a8b2d8" letter-spacing="4.5">ADVANCED REAL-TIME LIE DETECTION SYSTEM</text>
+
+  <!-- Sub-tagline -->
+  <text x="455" y="157" text-anchor="middle"
+        font-family="'Segoe UI', Arial, sans-serif"
+        font-size="11" fill="#4a5568" letter-spacing="1.2">Computer Vision · MediaPipe FaceMesh · Random Forest · Tkinter GUI</text>
+
+  <!-- Tech pill tags -->
+  <g font-family="'Segoe UI', Arial, sans-serif" font-size="10.5">
+    <rect x="198" y="175" width="76" height="22" rx="11" fill="#7C3AED" fill-opacity="0.18" stroke="#7C3AED" stroke-width="0.8"/>
+    <text x="236" y="190" text-anchor="middle" fill="#a78bfa">Python 3.7+</text>
+
+    <rect x="282" y="175" width="72" height="22" rx="11" fill="#2563EB" fill-opacity="0.18" stroke="#2563EB" stroke-width="0.8"/>
+    <text x="318" y="190" text-anchor="middle" fill="#60a5fa">MediaPipe</text>
+
+    <rect x="362" y="175" width="64" height="22" rx="11" fill="#06B6D4" fill-opacity="0.18" stroke="#06B6D4" stroke-width="0.8"/>
+    <text x="394" y="190" text-anchor="middle" fill="#67e8f9">OpenCV</text>
+
+    <rect x="434" y="175" width="82" height="22" rx="11" fill="#7C3AED" fill-opacity="0.18" stroke="#7C3AED" stroke-width="0.8"/>
+    <text x="475" y="190" text-anchor="middle" fill="#a78bfa">Scikit-learn</text>
+
+    <rect x="524" y="175" width="44" height="22" rx="11" fill="#2563EB" fill-opacity="0.18" stroke="#2563EB" stroke-width="0.8"/>
+    <text x="546" y="190" text-anchor="middle" fill="#60a5fa">FER</text>
+
+    <rect x="576" y="175" width="60" height="22" rx="11" fill="#06B6D4" fill-opacity="0.18" stroke="#06B6D4" stroke-width="0.8"/>
+    <text x="606" y="190" text-anchor="middle" fill="#67e8f9">Tkinter</text>
+  </g>
+
+  <!-- Experimental badge -->
+  <g transform="translate(772,22)">
+    <rect x="-42" y="-13" width="84" height="24" rx="12" fill="#7C3AED" fill-opacity="0.88"/>
+    <text x="0" y="5" text-anchor="middle" font-family="Arial, sans-serif"
+          font-size="9.5" font-weight="700" fill="white" letter-spacing="1">EXPERIMENTAL</text>
+  </g>
+</svg>

@@ -1,0 +1,189 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 820 460" width="820">
+  <defs>
+    <linearGradient id="dfBg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#0a0a1a"/>
+      <stop offset="100%" style="stop-color:#0f0c29"/>
+    </linearGradient>
+    <linearGradient id="dfAcc" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#7C3AED"/>
+      <stop offset="50%" style="stop-color:#2563EB"/>
+      <stop offset="100%" style="stop-color:#06B6D4"/>
+    </linearGradient>
+    <marker id="da" markerWidth="9" markerHeight="7" refX="7" refY="3.5" orient="auto">
+      <polygon points="0 0, 9 3.5, 0 7" fill="#2563EB"/>
+    </marker>
+    <marker id="daC" markerWidth="9" markerHeight="7" refX="7" refY="3.5" orient="auto">
+      <polygon points="0 0, 9 3.5, 0 7" fill="#06B6D4"/>
+    </marker>
+    <marker id="daV" markerWidth="9" markerHeight="7" refX="7" refY="3.5" orient="auto">
+      <polygon points="0 0, 9 3.5, 0 7" fill="#7C3AED"/>
+    </marker>
+    <marker id="daG" markerWidth="9" markerHeight="7" refX="7" refY="3.5" orient="auto">
+      <polygon points="0 0, 9 3.5, 0 7" fill="#4a5568"/>
+    </marker>
+  </defs>
+
+  <!-- Background -->
+  <rect width="820" height="460" fill="url(#dfBg)" rx="12"/>
+
+  <!-- Title -->
+  <text x="410" y="36" text-anchor="middle" font-family="'Segoe UI', Arial, sans-serif"
+        font-size="15" font-weight="700" fill="white" letter-spacing="2">DATA FLOW PIPELINE</text>
+  <rect x="110" y="44" width="600" height="2" fill="url(#dfAcc)" rx="1" opacity="0.5"/>
+
+  <!-- ── STAGE HELPER MACRO (manually inlined for each stage) ── -->
+
+  <!-- Stage 0: Webcam Input -->
+  <rect x="28" y="65" width="110" height="80" rx="8" fill="#7C3AED" fill-opacity="0.15" stroke="#7C3AED" stroke-width="1.5"/>
+  <!-- camera icon -->
+  <rect x="56" y="79" width="28" height="20" rx="3" fill="none" stroke="#a78bfa" stroke-width="1.5"/>
+  <polygon points="84,85 94,80 94,98 84,93" fill="#a78bfa"/>
+  <circle cx="70" cy="89" r="5" fill="none" stroke="#a78bfa" stroke-width="1.2"/>
+  <text x="83" y="117" text-anchor="middle" font-family="'Segoe UI', Arial, sans-serif" font-size="10" font-weight="700" fill="white">Webcam</text>
+  <text x="83" y="130" text-anchor="middle" font-family="'Segoe UI', Arial, sans-serif" font-size="8.5" fill="#a8b2d8">BGR frames</text>
+  <text x="83" y="141" text-anchor="middle" font-family="'Segoe UI', Arial, sans-serif" font-size="8.5" fill="#a78bfa">source=0</text>
+
+  <!-- Arrow 0→1 -->
+  <line x1="139" y1="105" x2="168" y2="105" stroke="#2563EB" stroke-width="1.6" marker-end="url(#da)"/>
+
+  <!-- Stage 1: Frame Sampling -->
+  <rect x="170" y="65" width="118" height="80" rx="8" fill="#2563EB" fill-opacity="0.13" stroke="#2563EB" stroke-width="1.5"/>
+  <!-- icon: two overlapping rects -->
+  <rect x="203" y="78" width="22" height="16" rx="2" fill="none" stroke="#60a5fa" stroke-width="1.4"/>
+  <rect x="211" y="84" width="22" height="16" rx="2" fill="none" stroke="#60a5fa" stroke-width="1.4" stroke-dasharray="2,2"/>
+  <text x="229" y="117" text-anchor="middle" font-family="'Segoe UI', Arial, sans-serif" font-size="10" font-weight="700" fill="white">Frame Sampler</text>
+  <text x="229" y="130" text-anchor="middle" font-family="'Segoe UI', Arial, sans-serif" font-size="8.5" fill="#a8b2d8">skip odd frames</text>
+  <text x="229" y="141" text-anchor="middle" font-family="'Segoe UI', Arial, sans-serif" font-size="8.5" fill="#60a5fa">0.5× resize</text>
+
+  <!-- Arrow 1→2 -->
+  <line x1="289" y1="105" x2="318" y2="105" stroke="#2563EB" stroke-width="1.6" marker-end="url(#da)"/>
+
+  <!-- Stage 2: MediaPipe FaceMesh -->
+  <rect x="320" y="65" width="128" height="80" rx="8" fill="#2563EB" fill-opacity="0.13" stroke="#2563EB" stroke-width="1.5"/>
+  <!-- icon: dot grid -->
+  <circle cx="360" cy="83" r="2.5" fill="#60a5fa"/>
+  <circle cx="373" cy="80" r="2" fill="#60a5fa"/>
+  <circle cx="386" cy="83" r="2.5" fill="#60a5fa"/>
+  <circle cx="367" cy="92" r="2" fill="#60a5fa"/>
+  <circle cx="379" cy="92" r="2" fill="#60a5fa"/>
+  <circle cx="360" cy="101" r="2" fill="#60a5fa"/>
+  <circle cx="373" cy="99" r="2.5" fill="#60a5fa"/>
+  <circle cx="386" cy="101" r="2" fill="#60a5fa"/>
+  <text x="384" y="117" text-anchor="middle" font-family="'Segoe UI', Arial, sans-serif" font-size="10" font-weight="700" fill="white">MediaPipe</text>
+  <text x="384" y="130" text-anchor="middle" font-family="'Segoe UI', Arial, sans-serif" font-size="8.5" fill="#a8b2d8">468 landmarks</text>
+  <text x="384" y="141" text-anchor="middle" font-family="'Segoe UI', Arial, sans-serif" font-size="8.5" fill="#60a5fa">normalized (x,y,z)</text>
+
+  <!-- Arrow 2→3 -->
+  <line x1="449" y1="105" x2="478" y2="105" stroke="#2563EB" stroke-width="1.6" marker-end="url(#da)"/>
+
+  <!-- Stage 3: Feature Extraction -->
+  <rect x="480" y="65" width="128" height="80" rx="8" fill="#2563EB" fill-opacity="0.13" stroke="#2563EB" stroke-width="1.5"/>
+  <!-- icon: bar chart -->
+  <rect x="508" y="98" width="7" height="12" rx="1" fill="#60a5fa"/>
+  <rect x="518" y="90" width="7" height="20" rx="1" fill="#60a5fa"/>
+  <rect x="528" y="84" width="7" height="26" rx="1" fill="#60a5fa"/>
+  <rect x="538" y="94" width="7" height="16" rx="1" fill="#60a5fa"/>
+  <text x="544" y="117" text-anchor="middle" font-family="'Segoe UI', Arial, sans-serif" font-size="10" font-weight="700" fill="white">Feature Extractor</text>
+  <text x="544" y="130" text-anchor="middle" font-family="'Segoe UI', Arial, sans-serif" font-size="8.5" fill="#a8b2d8">EAR · asymmetry</text>
+  <text x="544" y="141" text-anchor="middle" font-family="'Segoe UI', Arial, sans-serif" font-size="8.5" fill="#60a5fa">blink · movement</text>
+
+  <!-- Arrow 3→4 -->
+  <line x1="609" y1="105" x2="638" y2="105" stroke="#2563EB" stroke-width="1.6" marker-end="url(#da)"/>
+
+  <!-- Stage 4: Baseline Comparison -->
+  <rect x="640" y="65" width="152" height="80" rx="8" fill="#06B6D4" fill-opacity="0.12" stroke="#06B6D4" stroke-width="1.5"/>
+  <!-- icon: diff arrow -->
+  <line x1="672" y1="100" x2="695" y2="100" stroke="#67e8f9" stroke-width="1.5" marker-end="url(#daC)"/>
+  <text x="672" y="88" font-family="Arial, sans-serif" font-size="8" fill="#67e8f9">base</text>
+  <text x="683" y="109" font-family="Arial, sans-serif" font-size="8" fill="#67e8f9">Δ</text>
+  <text x="716" y="117" text-anchor="middle" font-family="'Segoe UI', Arial, sans-serif" font-size="10" font-weight="700" fill="white">Baseline Δ</text>
+  <text x="716" y="130" text-anchor="middle" font-family="'Segoe UI', Arial, sans-serif" font-size="8.5" fill="#a8b2d8">deviation ratios</text>
+  <text x="716" y="141" text-anchor="middle" font-family="'Segoe UI', Arial, sans-serif" font-size="8.5" fill="#67e8f9">feature vector [5]</text>
+
+  <!-- ── BRANCH POINT at stage 4 output ── -->
+  <!-- Branch label -->
+  <text x="410" y="178" text-anchor="middle" font-family="'Segoe UI', Arial, sans-serif" font-size="9" fill="#4a5568" font-style="italic">— parallel inference paths —</text>
+
+  <!-- FER Branch: down from stage 3 -->
+  <line x1="544" y1="146" x2="544" y2="195" stroke="#7C3AED" stroke-width="1.3" marker-end="url(#daV)" stroke-dasharray="3,3"/>
+
+  <!-- FER box -->
+  <rect x="470" y="196" width="148" height="72" rx="7" fill="#7C3AED" fill-opacity="0.14" stroke="#7C3AED" stroke-width="1.2"/>
+  <!-- smile icon -->
+  <circle cx="500" cy="220" r="12" fill="none" stroke="#a78bfa" stroke-width="1.5"/>
+  <path d="M494,224 Q500,230 506,224" stroke="#a78bfa" stroke-width="1.3" fill="none"/>
+  <circle cx="496" cy="217" r="1.5" fill="#a78bfa"/>
+  <circle cx="504" cy="217" r="1.5" fill="#a78bfa"/>
+  <text x="544" y="224" text-anchor="middle" font-family="'Segoe UI', Arial, sans-serif" font-size="10" font-weight="700" fill="white">FER Emotion</text>
+  <text x="544" y="238" text-anchor="middle" font-family="'Segoe UI', Arial, sans-serif" font-size="8.5" fill="#a8b2d8">7 classes · MTCNN</text>
+  <text x="544" y="252" text-anchor="middle" font-family="'Segoe UI', Arial, sans-serif" font-size="8.5" fill="#a78bfa">emotion weight → score</text>
+
+  <!-- RF Branch: down from stage 4 output -->
+  <line x1="716" y1="146" x2="716" y2="195" stroke="#06B6D4" stroke-width="1.3" marker-end="url(#daC)"/>
+
+  <!-- RF box -->
+  <rect x="638" y="196" width="156" height="72" rx="7" fill="#06B6D4" fill-opacity="0.12" stroke="#06B6D4" stroke-width="1.2"/>
+  <!-- tree icon -->
+  <line x1="672" y1="256" x2="672" y2="240" stroke="#67e8f9" stroke-width="1.3"/>
+  <line x1="672" y1="248" x2="664" y2="238" stroke="#67e8f9" stroke-width="1.3"/>
+  <line x1="672" y1="248" x2="680" y2="238" stroke="#67e8f9" stroke-width="1.3"/>
+  <circle cx="672" cy="236" r="4" fill="#67e8f9" fill-opacity="0.4" stroke="#67e8f9" stroke-width="1"/>
+  <circle cx="664" cy="234" r="4" fill="#67e8f9" fill-opacity="0.4" stroke="#67e8f9" stroke-width="1"/>
+  <circle cx="680" cy="234" r="4" fill="#67e8f9" fill-opacity="0.4" stroke="#67e8f9" stroke-width="1"/>
+  <text x="716" y="224" text-anchor="middle" font-family="'Segoe UI', Arial, sans-serif" font-size="10" font-weight="700" fill="white">RandomForest</text>
+  <text x="716" y="238" text-anchor="middle" font-family="'Segoe UI', Arial, sans-serif" font-size="8.5" fill="#a8b2d8">100 estimators</text>
+  <text x="716" y="252" text-anchor="middle" font-family="'Segoe UI', Arial, sans-serif" font-size="8.5" fill="#67e8f9">predict_proba()[1] × sens</text>
+
+  <!-- Merge arrow: FER → deception score -->
+  <line x1="544" y1="269" x2="544" y2="315" stroke="#7C3AED" stroke-width="1.3" marker-end="url(#daV)"/>
+  <!-- Merge arrow: RF → deception score -->
+  <line x1="716" y1="269" x2="630" y2="315" stroke="#06B6D4" stroke-width="1.3" marker-end="url(#daC)"/>
+
+  <!-- Deception Score box (center-ish) -->
+  <rect x="460" y="316" width="200" height="70" rx="8" fill="#2563EB" fill-opacity="0.14" stroke="#2563EB" stroke-width="1.8"/>
+  <!-- gauge icon -->
+  <path d="M545,350 m-16,0 a16,16 0 0,1 32,0" stroke="#60a5fa" stroke-width="2" fill="none"/>
+  <line x1="545" y1="350" x2="553" y2="336" stroke="#60a5fa" stroke-width="1.8"/>
+  <text x="560" y="337" font-family="Arial, sans-serif" font-size="8" fill="#60a5fa">%</text>
+  <text x="560" y="355" text-anchor="middle" font-family="'Segoe UI', Arial, sans-serif" font-size="11" font-weight="700" fill="white">Deception Score</text>
+  <text x="560" y="369" text-anchor="middle" font-family="'Segoe UI', Arial, sans-serif" font-size="8.5" fill="#a8b2d8">0–100 %  · clamped · stored in deque</text>
+  <text x="560" y="380" text-anchor="middle" font-family="'Segoe UI', Arial, sans-serif" font-size="8.5" fill="#60a5fa">frame_data dict per frame</text>
+
+  <!-- Output arrows from deception score -->
+  <!-- → GUI Metrics -->
+  <line x1="460" y1="345" x2="330" y2="380" stroke="#4a5568" stroke-width="1.2" marker-end="url(#daG)"/>
+
+  <!-- GUI Metrics box -->
+  <rect x="130" y="358" width="168" height="60" rx="7" fill="#7C3AED" fill-opacity="0.10" stroke="#7C3AED" stroke-width="1"/>
+  <text x="214" y="378" text-anchor="middle" font-family="'Segoe UI', Arial, sans-serif" font-size="10" font-weight="700" fill="white">GUI / Live Graphs</text>
+  <text x="214" y="393" text-anchor="middle" font-family="'Segoe UI', Arial, sans-serif" font-size="8.5" fill="#a8b2d8">matplotlib  · ttk labels</text>
+  <text x="214" y="407" text-anchor="middle" font-family="'Segoe UI', Arial, sans-serif" font-size="8.5" fill="#a78bfa">50 ms update loop</text>
+
+  <!-- → CSV Export -->
+  <line x1="660" y1="356" x2="720" y2="380" stroke="#4a5568" stroke-width="1.2" marker-end="url(#daG)"/>
+
+  <!-- CSV Export box -->
+  <rect x="672" y="358" width="120" height="60" rx="7" fill="#06B6D4" fill-opacity="0.10" stroke="#06B6D4" stroke-width="1"/>
+  <text x="732" y="378" text-anchor="middle" font-family="'Segoe UI', Arial, sans-serif" font-size="10" font-weight="700" fill="white">CSV + Report</text>
+  <text x="732" y="393" text-anchor="middle" font-family="'Segoe UI', Arial, sans-serif" font-size="8.5" fill="#a8b2d8">pandas df.to_csv()</text>
+  <text x="732" y="407" text-anchor="middle" font-family="'Segoe UI', Arial, sans-serif" font-size="8.5" fill="#67e8f9">summary .txt</text>
+
+  <!-- ── ERROR PATH ── -->
+  <!-- No face detected label -->
+  <line x1="384" y1="146" x2="384" y2="196" stroke="#4a5568" stroke-width="1.1" stroke-dasharray="3,3" marker-end="url(#daG)"/>
+  <rect x="310" y="196" width="130" height="45" rx="6" fill="#4a5568" fill-opacity="0.12" stroke="#4a5568" stroke-width="0.9" stroke-dasharray="3,3"/>
+  <text x="375" y="214" text-anchor="middle" font-family="'Segoe UI', Arial, sans-serif" font-size="9" fill="#4a5568">No face detected</text>
+  <text x="375" y="228" text-anchor="middle" font-family="'Segoe UI', Arial, sans-serif" font-size="8.5" fill="#4a5568">→ zero metrics dict</text>
+  <text x="375" y="241" text-anchor="middle" font-family="'Segoe UI', Arial, sans-serif" font-size="8" fill="#4a5568">→ skip deduction</text>
+
+  <!-- Baseline calibration side note -->
+  <rect x="28" y="196" width="148" height="72" rx="7" fill="#06B6D4" fill-opacity="0.08" stroke="#06B6D4" stroke-width="0.9" stroke-dasharray="4,3"/>
+  <text x="102" y="216" text-anchor="middle" font-family="'Segoe UI', Arial, sans-serif" font-size="10" font-weight="700" fill="white">Baseline Capture</text>
+  <text x="102" y="230" text-anchor="middle" font-family="'Segoe UI', Arial, sans-serif" font-size="8.5" fill="#a8b2d8">10 s neutral recording</text>
+  <text x="102" y="244" text-anchor="middle" font-family="'Segoe UI', Arial, sans-serif" font-size="8.5" fill="#a8b2d8">stored separately</text>
+  <text x="102" y="258" text-anchor="middle" font-family="'Segoe UI', Arial, sans-serif" font-size="8.5" fill="#67e8f9">feeds deviation calc</text>
+
+  <!-- Feed line from baseline → feature extractor -->
+  <line x1="176" y1="232" x2="480" y2="232" stroke="#06B6D4" stroke-width="1" stroke-dasharray="3,3" marker-end="url(#daC)" opacity="0.6"/>
+  <text x="330" y="224" text-anchor="middle" font-family="Arial, sans-serif" font-size="8" fill="#06B6D4" opacity="0.7">calibration reference</text>
+</svg>
